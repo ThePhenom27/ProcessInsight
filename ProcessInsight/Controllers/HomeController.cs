@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProcessInsight.Models;
 
 namespace ProcessInsight.Controllers
 {
@@ -12,7 +11,11 @@ namespace ProcessInsight.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var processes = System.Diagnostics.Process.GetProcesses();
+
+            var processNames = processes.Select(p => p.ProcessName);
+
+            return View(processNames);
         }
     }
 }
