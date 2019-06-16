@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ProcessInsight
 {
+    using ElectronNET.API;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -50,6 +52,8 @@ namespace ProcessInsight
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            Task.Run(() => Electron.WindowManager.CreateWindowAsync());
         }
     }
 }
