@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 
 namespace ProcessInsight
 {
+    using ElectronNET.API;
+
     public class Program
     {
         public static void Main(string[] args)
@@ -19,6 +21,7 @@ namespace ProcessInsight
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseElectron(args)
                 .UseStartup<Startup>();
     }
 }
